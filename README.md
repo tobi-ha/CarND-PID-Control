@@ -64,6 +64,20 @@ for instructions and the project rubric.
 * You don't have to follow this directory structure, but if you do, your work
   will span all of the .cpp files here. Keep an eye out for TODOs.
 
+## Implementation
+
+For the PID controller the error calculation was implemented in the PID class. The error is in detail the cross-track error which is the lateral distance between the vehicle and the middle of the track. Each errors were calculated seperately - P by the error itself, I by the integral of the eoor over time and D as the derivative of the error. 
+The instance of the PID Controller class was initialized with the three controller gains. The following combination of the gain values turned out to work well: 
+Proportional gain: 	0.15
+Integral gain:		0.0006
+Derivative gain:	0.87
+
+For tuning the gains a trail and error approach was chosen. 
+The P Gain was set as small as possible so that the oscillation is small. But big enough to turn every corner safely. With the P gain value of .15, all of the curves in the simulator did not cause any problems. 
+As there are no static errors, the I gain could have been set to zero which comes with the advantage that the oscillation is low. However, I set it to .0006 as I wanted the car to be prepared for influences like side wind or changes in chassis geometry - which I honestly do not expect to happen in the simulator. 
+The derivative gain was set as high as possible. But going even higher with the value as .87 results in an uncomfortable driving behaviour. Because the track in the simulator turned out to be not very smooth/not continous. 
+
+
 ## Call for IDE Profiles Pull Requests
 
 Help your fellow students!
